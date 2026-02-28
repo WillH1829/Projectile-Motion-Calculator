@@ -1,0 +1,3 @@
+28/02/26: First iteration of projectile motion calculator.
+  - introduced calculator
+  - created functions: calcinitialhorizontalvelocity, calcinitialverticalvelocity, calcangle.
