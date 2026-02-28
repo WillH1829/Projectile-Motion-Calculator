@@ -1,0 +1,119 @@
+#mainscript
+import math
+import time
+
+#introduce calculator
+print("Hello, welcome to this projectile motion calculator!")
+time.sleep(2)
+
+#ask for user input (type of question)
+#store input in variable 
+questiontype = str(input("What value are you trying to calculate?"))
+
+#function to calculate initial horizontal velocity
+def calcinitialhorizontalvelocity():
+    #ask user if they have the initialy velocity
+    initialvelocity = str(input("Do you have the initial velocity?"))
+    #ask user if they have the angle of the initial motion
+    angle = str(input("Do you have the angle of the initial motion?"))
+    #convert answers into lowercase
+    initialvelocity = initialvelocity.lower()
+    angle = angle.lower()
+    #if they have both, calculate the initial horizontal velocity
+    if initialvelocity == "yes" and angle == "yes":
+        #ask for values for initial velocity and angle
+        initialvelocity = float(input("What is the initial velocity in m/s?"))
+        angle = float(input("What is the angle of the initial motion in degrees?"))
+        #use trigonometry to calculate the initial horizontal velocity
+        initialhorizontalvelocity = initialvelocity * math.cos(math.radians(angle))
+        return initialhorizontalvelocity #return the initial horizontal velocity
+    else:
+        #asks if they have the initial vertical velocity
+        initialverticalvelocity = str(input("Do you have the initial vertical velocity?"))
+        initialverticalvelocity = initialverticalvelocity.lower() #convert answer to lowercase
+        if initialverticalvelocity == "yes" and angle == "yes":
+            #ask for value of initial vertical velocity
+            initialverticalvelocity = float(input("What is the initial vertical velocity in m/s?"))
+            angle = float(input("What is the angle of the initial motion in degrees?"))
+            #use trigonometry to calculate the initial horizontal velocity
+            initialhorizontalvelocity = initialverticalvelocity / math.tan(math.radians(angle))
+            return initialhorizontalvelocity #return the initial horizontal velocity
+        elif initialverticalvelocity == "yes" and initialvelocity == "yes":
+            #ask for value of initial vertical velocity
+            initialverticalvelocity = float(input("What is the initial vertical velocity in m/s?"))
+            initialvelocity = float(input("What is the initial velocity in m/s?"))
+            #use pythagoras to calculate the initial horizontal velocity
+            initialhorizontalvelocity = math.sqrt(initialvelocity**2 - initialverticalvelocity**2)
+            return initialhorizontalvelocity #return the initial horizontal velocity
+
+#function to calculate initial vertical velocity
+def calcinitialverticalvelocity():
+    #ask user if they have the initial horizontal velocity
+    initialhorizontalvelocity = str(input("Do you have the initial horizontal velocity?"))
+    #ask user if they have the angle of the initial motion
+    angle = str(input("Do you have the angle of the initial motion?"))
+    #convert answers into lowercase
+    initialhorizontalvelocity = initialhorizontalvelocity.lower()
+    angle = angle.lower()
+    #if they have both, calculate the initial vertical velocity
+    if initialhorizontalvelocity == "yes" and angle == "yes":
+        #ask for values for initial horizontal velocity and angle
+        initialhorizontalvelocity = float(input("What is the initial horizontal velocity in m/s?"))
+        angle = float(input("What is the angle of the initial motion in degrees?"))
+        #use trigonometry to calculate the initial vertical velocity
+        initialverticalvelocity = initialhorizontalvelocity * math.tan(math.radians(angle))
+        return initialverticalvelocity #return the initial vertical velocity
+    else:
+        #asks if they have the initial velocity
+        initialvelocity = str(input("Do you have the initial velocity?"))
+        initialvelocity = initialvelocity.lower() #convert answer to lowercase
+        if initialvelocity == "yes" and angle == "yes":
+            #ask for value of initial velocity
+            initialvelocity = float(input("What is the initial velocity in m/s?"))
+            angle = float(input("What is the angle of the initial motion in degrees?"))
+            #use trigonometry to calculate the initial vertical velocity
+            initialverticalvelocity = initialvelocity * math.sin(math.radians(angle))
+            return initialverticalvelocity #return the initial vertical velocity
+        elif initialvelocity == "yes" and initialhorizontalvelocity == "yes":
+            #ask for value of initial velocity
+            initialvelocity = float(input("What is the initial velocity in m/s?"))
+            initialhorizontalvelocity = float(input("What is the initial horizontal velocity in m/s?"))
+            #use pythagoras to calculate the initial vertical velocity
+            initialverticalvelocity = math.sqrt(initialvelocity**2 - initialhorizontalvelocity**2)
+            return initialverticalvelocity #return the initial vertical velocity
+
+#function to calculate angle of initial motion   
+def calcangle():
+    #ask user if they have the initial horizontal velocity
+    initialhorizontalvelocity = str(input("Do you have the initial horizontal velocity?"))
+    #ask user if they have the initial vertical velocity
+    initialverticalvelocity = str(input("Do you have the initial vertical velocity?"))
+    #convert answers into lowercase
+    initialhorizontalvelocity = initialhorizontalvelocity.lower()
+    initialverticalvelocity = initialverticalvelocity.lower()
+    #if they have both, calculate the angle of the initial motion
+    if initialhorizontalvelocity == "yes" and initialverticalvelocity == "yes":
+        #ask for values for initial horizontal velocity and initial vertical velocity
+        initialhorizontalvelocity = float(input("What is the initial horizontal velocity in m/s?"))
+        initialverticalvelocity = float(input("What is the initial vertical velocity in m/s?"))
+        #use trigonometry to calculate the angle of the initial motion
+        angle = math.degrees(math.atan(initialverticalvelocity / initialhorizontalvelocity))
+        return angle #return the angle of the initial motion
+    else:
+        #asks if they have the initial velocity
+        initialvelocity = str(input("Do you have the initial velocity?"))
+        initialvelocity = initialvelocity.lower() #convert answer to lowercase
+        if initialvelocity == "yes" and initialhorizontalvelocity == "yes":
+            #ask for value of initial velocity
+            initialvelocity = float(input("What is the initial velocity in m/s?"))
+            initialhorizontalvelocity = float(input("What is the initial horizontal velocity in m/s?"))
+            #use trigonometry to calculate the angle of the initial motion
+            angle = math.degrees(math.acos(initialhorizontalvelocity / initialvelocity))
+            return angle #return the angle of the initial motion
+        elif initialvelocity == "yes" and initialverticalvelocity == "yes":
+            #ask for value of initial velocity
+            initialvelocity = float(input("What is the initial velocity in m/s?"))
+            initialverticalvelocity = float(input("What is the initial vertical velocity in m/s?"))
+            #use trigonometry to calculate the angle of the initial motion
+            angle = math.degrees(math.asin(initialverticalvelocity / initialvelocity))
+            return angle #return the angle of the initial motion
