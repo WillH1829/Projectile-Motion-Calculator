@@ -1,3 +1,7 @@
 28/02/26: First iteration of projectile motion calculator.
   - introduced calculator
   - created functions: calcinitialhorizontalvelocity, calcinitialverticalvelocity, calcangle.
+28/02/26: Refined code.
+  - created helper function: ask_yes.
+  - replaced lots of code which asked if user had certain values.
+  - replaced code converting answer to lowercase.
